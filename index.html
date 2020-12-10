@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" href="src/images/wonder-media-icon.png" type="image/png">
+  <link rel="stylesheet" href="src/css/normalize.css">
+  <link rel="stylesheet" href="src/css/fonts.css">
+  <link rel="stylesheet" href="src/css/home.css" />
+  <link rel="stylesheet" href="src/css/modal.css" />
+  <title>Wonder Media</title>
+  <script type="text/javascript">
+    function ImgError(source){
+        source.src = "src/images/notfound.png";
+        source.onerror = "";
+        return true;
+    }
+</script>
+</head>
+<body>
+  <section class="home" id="home">
+    <div class="home-sidebar">
+      <div class="sidebar">
+        <div class="logo">
+          <figure class="logo-image">
+            <img src="src/images/wonder-media.png" alt="Wonder Media"/>
+          </figure>
+        </div>
+        <div class="audio-search">
+          <form action="" class="search" id="music-form">
+            <input type="text" name="artist" placeholder="Buscar una banda o artista"/>
+          </form>
+        </div>
+        <div class="sidebarPlaylist">
+          <h2 class="sidebarPlaylist-title" id="myPlaylist-title"></h2>
+          <ol class="myPlaylist" id="myPlaylist">
+          </ol>
+        </div>
+        <div class="sidebarPlaylist">
+          <h2 class="sidebarPlaylist-title">Canciones almacenadas</h2>
+          <ul class="playlistFriends">
+            <li class="playlistFriends-item">
+              <a href="#">
+                <img src="src/images/covers/one-more-time.jpg" alt="One more time" />
+                <span>
+                  One More Time
+                </span>
+              </a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+    </div>
+    <div class="home-primary">
+      <!-- <section class="primary"> -->
+        <div class="primary-search">
+          <form action="" class="search" id="video-form">
+            <input type="text" name="name" placeholder="Buscar un artista o tema favorito"/>
+          </form>
+        </div>
+        <div class="primary-user">
+          <div class="user">
+            <p>
+              <img src="src/images/covers/gorillaz.jpg" alt="Juan"/>
+              <span>Juan Fernando Montufar</span>
+            </p>
+          </div>
+        </div>
+        <div class="primary-list">
+          <div class="primaryPlaylist">
+            <h3 class="primaryPlaylist-topic">A los golpes</h3>
+            <h2 class="primaryPlaylist-title">Acción</h2>
+            <div class="primaryPlaylist-list" id="action">
+              <img src="src/images/loader.gif" width="50" height="50" alt="">
+            </div>
+          </div>
+          <div class="primaryPlaylist">
+            <h3 class="primaryPlaylist-topic">Para llorar</h3>
+            <h2 class="primaryPlaylist-title">Drama</h2>
+            <div class="primaryPlaylist-list" id="drama">
+              <img src="src/images/loader.gif" width="50" height="50" alt="">
+            </div>
+          </div>
+          <div class="primaryPlaylist">
+            <h3 class="primaryPlaylist-topic">Dibujitos animados</h3>
+            <h2 class="primaryPlaylist-title">Animación</h2>
+            <div class="primaryPlaylist-list" id="animation">
+              <img src="src/images/loader.gif" width="50" height="50" alt="">
+            </div>
+          </div>
+        </div>
+      <!-- </section> -->
+    </div>
+    <div class="home-featuring" id="featuring">
+
+    </div>
+  </section>
+  <div class="overlay" id="overlay">
+  </div>
+  <div class="video-modal" id="video-modal">
+    <h1>Título de pelicula</h1>
+    <div class="modal-content">
+      <img src="" onerror="ImgError(this)" width="170" height="256">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione impedit maiores enim alias ex accusantium quasi cum autem, nam, voluptas tenetur laudantium quod! Odit voluptate illo, voluptas vel quia, quae.</p>
+    </div>
+    <div class="modal-buttons">
+      <button class="modal-btn primary" id="hide-video-modal">Cerrar</button>
+    </div>
+  </div>
+  <div class="artist-modal" id="artist-modal">
+    <h1>Nombre de artista</h1>
+    <div class="modal-content">
+      <img src="" onerror="ImgError(this)" width="170" height="256">
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione impedit maiores enim alias ex accusantium quasi cum autem, nam, voluptas tenetur laudantium quod! Odit voluptate illo, voluptas vel quia, quae.</p>
+    </div>
+    <div class="modal-buttons">
+      <button class="modal-btn primary" id="hide-artist-modal">Cerrar</button>
+    </div>
+  </div>
+  <div class="music-modal" id="music-modal">
+    <div class="music-modal-title">
+      <img src="src/images/covers/gorillaz.jpg" alt="Juan" id="artist-img"/>
+      <h2 id="song-title">Título de canción</h2>
+    </div>
+    <div class="modal-content">
+      <div class="music-video">
+        <iframe class="youtube-video" id="youtube-video" src="https://www.youtube.com/embed/fHI8X4OXluQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <h4>Haga click <a id="youtube-link" href="#" target="_blank">aquí</a> en caso de error</h4>
+    <div class="modal-buttons">
+      <button class="modal-btn primary" id="hide-music-modal">Cerrar</button>
+    </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- <script src="src/js/promises.js"></script> -->
+  <!-- <script src="src/js/ajax.js"></script> -->
+  <script src="src/js/music.js"></script>
+  <script src="src/js/home.js"></script>
+</body>
+</html>
