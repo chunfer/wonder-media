@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0;">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="shortcut icon" href="src/images/wonder-media-icon.png" type="image/png">
-  <link rel="stylesheet" href="src/css/normalize.css">
   <link rel="stylesheet" href="src/css/fonts.css">
   <link rel="stylesheet" href="src/css/home.css" />
   <link rel="stylesheet" href="src/css/modal.css" />
+  <link rel="stylesheet" href="src/css/responsive.css">
   <title>Wonder Media</title>
   <script type="text/javascript">
     function ImgError(source){
@@ -25,32 +27,35 @@
             <img src="src/images/wonder-media.png" alt="Wonder Media"/>
           </figure>
         </div>
-        <div class="audio-search">
-          <form action="" class="search" id="music-form">
-            <input type="text" name="artist" placeholder="Buscar una banda o artista"/>
-          </form>
-        </div>
-        <div class="sidebarPlaylist">
-          <h2 class="sidebarPlaylist-title" id="myPlaylist-title"></h2>
-          <ol class="myPlaylist" id="myPlaylist">
-          </ol>
-        </div>
-        <div class="sidebarPlaylist">
-          <h2 class="sidebarPlaylist-title">Canciones almacenadas</h2>
-          <ul class="playlistFriends">
-            <li class="playlistFriends-item">
-              <a href="#">
-                <img src="src/images/covers/one-more-time.jpg" alt="One more time" />
-                <span>
-                  One More Time
-                </span>
-              </a>
-            </li>
-
-          </ul>
+        <div class="sidebar-content" id="sidebar-content">
+          <div class="audio-search">
+            <form action="" class="search" id="music-form">
+              <input type="text" name="artist" placeholder="Buscar una banda o artista"/>
+            </form>
+          </div>
+          <div class="sidebarPlaylist">
+            <h2 class="sidebarPlaylist-title" id="myPlaylist-title"></h2>
+            <ol class="myPlaylist" id="myPlaylist">
+            </ol>
+          </div>
+          <div class="sidebarPlaylist">
+            <h2 class="sidebarPlaylist-title">Canciones almacenadas</h2>
+            <ul class="playlistFriends">
+              <li class="playlistFriends-item">
+                <a href="#">
+                  <img src="src/images/one-more-time.jpg" alt="One more time" />
+                  <span>
+                    One More Time
+                  </span>
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="menu-btn" id="music-btn">
+            <i class="fa fa-angle-down"></i>
+          </div>          
         </div>
       </div>
-
     </div>
     <div class="home-primary">
       <!-- <section class="primary"> -->
@@ -62,7 +67,7 @@
         <div class="primary-user">
           <div class="user">
             <p>
-              <img src="src/images/covers/gorillaz.jpg" alt="Juan"/>
+              <img src="src/images/gorillaz.jpg" alt="Juan"/>
               <span>Juan Fernando Montufar</span>
             </p>
           </div>
@@ -98,7 +103,7 @@
   </section>
   <div class="overlay" id="overlay">
   </div>
-  <div class="video-modal" id="video-modal">
+  <div class="modal video-modal" id="video-modal">
     <h1>Título de pelicula</h1>
     <div class="modal-content">
       <img src="" onerror="ImgError(this)" width="170" height="256">
@@ -108,7 +113,7 @@
       <button class="modal-btn primary" id="hide-video-modal">Cerrar</button>
     </div>
   </div>
-  <div class="artist-modal" id="artist-modal">
+  <div class="modal artist-modal" id="artist-modal">
     <h1>Nombre de artista</h1>
     <div class="modal-content">
       <img src="" onerror="ImgError(this)" width="170" height="256">
@@ -118,9 +123,9 @@
       <button class="modal-btn primary" id="hide-artist-modal">Cerrar</button>
     </div>
   </div>
-  <div class="music-modal" id="music-modal">
+  <div class="modal music-modal" id="music-modal">
     <div class="music-modal-title">
-      <img src="src/images/covers/gorillaz.jpg" alt="Juan" id="artist-img"/>
+      <img src="src/images/gorillaz.jpg" alt="Juan" id="artist-img"/>
       <h2 id="song-title">Título de canción</h2>
     </div>
     <div class="modal-content">

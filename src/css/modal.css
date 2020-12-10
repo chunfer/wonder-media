@@ -43,12 +43,12 @@
   /*visibility: visible;*/
   display: flex;
 }
-.video-modal, .artist-modal, .music-modal{
+.modal{
   background: white;
   padding: 2em;
   border-radius: .5em;
   text-align: center;
-  z-index: 2;
+  z-index: 4;
   transform: translateY(-3000px);
   position: absolute;
   left: 10px;
@@ -67,7 +67,8 @@
 }
 
 .artist-modal{
-  max-width: 720px;
+  max-width: 580px;
+  height: fit-content;
 }
 
 .music-modal{
@@ -108,12 +109,12 @@
 .modal-content p {
   text-align: justify;
   max-width: 335px;
-  max-height: 390px;
+  max-height: 350px;
   overflow: auto;
 }
 
 .artist-modal p{
-  max-width: 520px;
+  max-width: 390px;
 }
 
 .music-modal h4{

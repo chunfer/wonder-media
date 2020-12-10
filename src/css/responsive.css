@@ -1,0 +1,133 @@
+@keyframes musicIn {
+    0% {
+        transform: translateY(calc(180px - 100vh));
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes musicOut {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(calc(180px - 100vh));
+    }
+}
+
+@media screen and (max-width: 904px){
+    .home{
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto 1fr;
+        grid-template-areas: "sidebar"
+        "primary"
+        "featuring";
+    }
+    .sidebar{
+        height: 150px;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .sidebar-content{
+        position: fixed;
+        text-align: left;
+        height: 100vh;
+        z-index: 2;
+        padding: 0;
+        top: 0;
+        transform: translateY(calc(180px - 100vh));
+        width: 100%;
+        box-sizing: border-box;
+        background: #171929;
+    }
+
+    .sidebar-content h2{
+        margin: 0;
+    }
+
+    .menu-btn{
+        display: initial;
+    }
+
+    .audio-search, .sidebarPlaylist{
+        padding: 0 1em;
+    }
+
+    .audio-search{
+        padding-top: 160px;
+    }
+
+    .logo{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 3;
+        padding: 15px 0;
+        width: 100%;
+        background: #171929;
+    }
+
+    .logo-image{
+        padding: 0;
+    }
+
+    .logo-image img {
+        max-width: unset;
+        height: 120px;
+    }
+
+    .home.search-active {
+        grid-template-rows: auto auto 1fr auto;
+    }
+    .featuring {
+        padding: 10px;
+        height: unset;
+        justify-content: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+    }
+    .home-primary{
+        padding-top: 35px;
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+@media screen and (max-width: 658px){
+    .artist-modal, .video-modal{
+        bottom: unset;
+    }
+
+    .artist-modal p, .video-modal p{
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 512px){
+    .home-primary{
+        grid-template-columns: 4fr 1fr;
+    }
+    .user span{
+        display: none;
+    }
+
+    .sidebar-content h2{
+        font-size: 20px;
+    }
+
+    .music-modal{
+        padding: 2em 0;
+    }
+
+    .music-modal-title{
+        padding: 0 2em;
+        box-sizing: border-box;
+    }
+    .music-modal h4{
+        padding-right: 1em;
+    }
+}

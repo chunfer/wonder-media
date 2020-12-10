@@ -75,7 +75,23 @@ const YOUTUBE_URL = 'https://www.youtube.com/';
         const $html = document.implementation.createHTMLDocument();
         $html.body.innerHTML = HTMLString;
         return $html.body.children[0];
-      }
+    }
+
+    function toggleMusicContent(){
+        if(musicFlag){
+            $musicBtn.innerHTML = '<i class="fa fa-angle-down"></i>';
+            $sidebarContent.style.animation = 'musicOut .8s forwards';
+        }else{
+            $musicBtn.innerHTML = '<i class="fa fa-angle-up"></i>';
+            $sidebarContent.style.animation = 'musicIn .8s forwards';
+        }
+        musicFlag = !musicFlag;
+    }
+    let musicFlag = false;
+    const $sidebarContent = document.getElementById('sidebar-content');
+    const $musicBtn = document.getElementById('music-btn');
+
+    $musicBtn.addEventListener('click', toggleMusicContent);
 
     const $musicForm = document.getElementById('music-form');
     const $playlistTitle = document.getElementById('myPlaylist-title');

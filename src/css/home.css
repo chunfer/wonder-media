@@ -48,19 +48,23 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
 .sidebar {
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: auto auto 1fr 1fr;
+  grid-template-rows: auto 1fr;
   background: #171929;
   color: white;
   padding: 1em;
   box-sizing: border-box;
   height: 100vh;
+}
+
+.sidebar-content{
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr 1fr;
   overflow: auto;
 }
 
 /*Logo*/
-.logo {
 
-}
 .logo-image {
   margin: 0;
   padding-bottom: 20px;
@@ -141,6 +145,16 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
   display: inline-block;
 }
 
+.menu-btn{
+  cursor: pointer;
+  text-align: center;
+  font-size: 20px;
+  display: none;
+}
+
+.menu-btn:active{
+  background: black;
+}
 
 .home-primary {
   display: grid;
@@ -201,6 +215,7 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
   object-fit: cover;
   border-radius: 50%;
   margin-right: 10px;
+  margin-left: 10px;
 }
 
 .primary-list {
@@ -265,6 +280,7 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
 
 .featuring-image {
   margin-right: 20px;
+  height: 100px;
 }
 
 .featuring-title {
