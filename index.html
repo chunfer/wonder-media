@@ -18,7 +18,7 @@
     }
     function closeFeaturing(){
       const $home = document.getElementById('home');
-      const $featuringContainer = document.getElementById('featuring');
+      const $featuringContainer = document.getElementById('found');
       $home.classList.remove('search-active');
       $featuringContainer.innerHTML = '';
     }
@@ -104,7 +104,12 @@
       <!-- </section> -->
     </div>
     <div class="home-featuring" id="featuring">
-
+      <div class="featuring">
+        <div class="foundlist" id="found">
+        </div>
+        <span class="close-featuring" onclick="closeFeaturing()">&times;</span>
+      </div>
+      
     </div>
   </section>
   <div class="overlay" id="overlay">

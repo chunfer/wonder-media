@@ -27,7 +27,7 @@ Dentro de JavaScript tenemos tres formas de declarar una variable las cuales son
 Las funciones son piezas de código que puedes reutilizar y se declaran con la palabra function. */
 
 .home.search-active {
-  grid-template-rows: 1fr 150px;
+  grid-template-rows: 1fr 250px;
 }
 
 .home-sidebar {
@@ -39,6 +39,7 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
 .home-featuring {
   grid-area: featuring;
   display: grid;
+  height: 100%;
 }
 .home-featuring img {
   align-self: center;
@@ -265,7 +266,7 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
   font-size: 20px;
   font-weight: 400;
 }
-.primaryPlaylist-list {
+.primaryPlaylist-list, .foundlist {
   display: flex;
   overflow: auto;
 }
@@ -274,7 +275,7 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
   margin-right: 10px;
 }
 
-.primaryPlaylistItem {
+.primaryPlaylistItem, .foundlistItem {
   cursor: pointer;
   transition: .3s;
   /*border: 1px solid blue;*/
@@ -283,7 +284,7 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
   transform: scale(1.1)
 }
 */
-.primaryPlaylistItem-image {
+.primaryPlaylistItem-image, .foundlistItem-image {
   animation: 5000ms fadeIn;
 }
 
@@ -307,18 +308,19 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
 
 .featuring {
   background: linear-gradient(to right, #3800ff, #ff458b);
-  position: relative;
-  bottom: 0;
   display: flex;
   height: 100%;
+  position: relative;
+  bottom: 0;
   align-items: center;
-  padding-left: 100px;
+  padding: 0 20px;
+  box-sizing: border-box;
   color: white;
+  overflow: auto;
 }
 
 .featuring-image {
   margin-right: 20px;
-  height: 100px;
 }
 
 .featuring-title {
@@ -347,6 +349,26 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
 .close-featuring:active{
   transform:  scale(0.9);
   color: rgb(230, 230, 230);
+}
+
+.foundlistItem{
+  height: 100%;
+  padding-top: 10px;
+  padding-right: 10px;
+  box-sizing: border-box;
+}
+
+.foundlistItem img {
+  width: 120px;
+  height: 175px;
+  align-self: flex-start;
+  object-fit: cover;
+}
+
+.foundlistItem-title {
+  margin: 0 0 2px;
+  width: 120px;
+  font-size: .7em;
 }
 
 

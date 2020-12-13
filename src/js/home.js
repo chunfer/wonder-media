@@ -23,6 +23,17 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
       </div>`
     }
 
+    function foundItemTemplate({medium_cover_image, title, id}, category){
+      return `<div class="foundlistItem" data-id=${id} data-category=${category}>
+      <div class="foundlistItem-image">
+        <img src="${medium_cover_image}" onerror="ImgError(this)">
+      </div>
+      <h4 class="foundlistItem-title">
+        ${title}
+      </h4>
+      </div>`
+    }
+
     function createTemplate(HTMLString){
       const $html = document.implementation.createHTMLDocument();
       $html.body.innerHTML = HTMLString;
@@ -45,8 +56,11 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
         case 'drama':
           return dramaList.find(movie => movie.id === Number(id));
 
-        default:
+        case 'animation':
           return animationList.find(movie => movie.id === Number(id));
+        
+        default:
+          return foundList.find(movie => movie.id === Number(id));
       }
     }
 
@@ -71,7 +85,13 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
     function renderMovieList(list, $container, category){
       $container.children[0].remove();
       list.forEach(async movie => {
-          const HTMLString = videoItemTemplate(movie, category);
+        let HTMLString;
+        if(category === 'found'){
+          HTMLString = foundItemTemplate(movie, category);
+        } else {
+          HTMLString = videoItemTemplate(movie, category);
+        }
+
           const movieElement = createTemplate(HTMLString);
           $container.append(movieElement);
           // const image = movieElement.querySelector('img');
@@ -87,19 +107,6 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
       for(const attribute in attributes){
         $element.setAttribute(attribute, attributes[attribute]);
       }
-    }
-
-    function featuringTemplate({medium_cover_image, title}, found = 'Pelicula encontrada'){
-      return `<div class="featuring">
-      <div class="featuring-image">
-        <img src="${medium_cover_image}" width="70" height="100" alt="">
-      </div>
-      <div class="featuring-content">
-        <p class="featuring-title">${found}</p>
-        <p class="featuring-album">${title}</p>
-      </div>
-      <span class="close-featuring" onclick="closeFeaturing()">&times;<span>
-    </div>`
     }
 
     async function cacheExist(category){
@@ -164,25 +171,19 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
         height: 50,
         width: 50
       })
-      $featuringContainer.innerHTML = '';
-      $featuringContainer.append($loader);
+      $foundContainer.innerHTML = '';
+      $foundContainer.append($loader);
       const data = new FormData($videoForm);
-      let  HTMLString;
 
       try {
-        const {
-          data: {
-            movies: movieSearched
-          }
-        } = await getData(`${MOVIE_URL}limit=1&query_term=${data.get('name')}`);
-        HTMLString = featuringTemplate(movieSearched[0]);
+        const {data: {movies: foundListTemp}} = await getData(`${MOVIE_URL}query_term=${data.get('name')}`);
+        foundList = foundListTemp;
+        renderMovieList(foundList, $foundContainer, 'found')
 
       } catch (error) {
         console.log(error);
-        HTMLString = featuringTemplate({medium_cover_image: 'src/images/sad2.png', title: 'Lo sentimos'}, 'No se pudo encontrar tu pelicula')
+        $foundContainer.innerHTML = `<h3>Lo sentimos, no pudimos encontrar niguna película</h3>` 
       }
-
-      $featuringContainer.innerHTML = HTMLString;
     });
 
     const today = new Date().getDay();
@@ -205,7 +206,8 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
 
     $hideModal.addEventListener('click', hideModal);
 
-    const $featuringContainer = document.getElementById('featuring');
+    let foundList;
+    const $foundContainer = document.getElementById('found');
 
     const modalTitle = $modal.querySelector('h1');
     const modalImage = $modal.querySelector('img');
