@@ -57,6 +57,7 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
       modalImage.setAttribute('onerror','ImgError(this)')
       modalImage.setAttribute('src', movie.medium_cover_image);
       modalDescription.textContent = movie.description_full;
+      downloadLink = movie.torrents[0].url;
       $overlay.classList.add('active');
       $modal.style.animation = 'modalIn .8s forwards';
       // $element.querySelector('p').textContent= '';
@@ -147,6 +148,10 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
       renderMovieList(animationList, $animationContainer, 'animation');
     }
 
+    function hrefLink(){
+      location.href = downloadLink;
+    }
+
     const $home = document.getElementById('home');
     const $videoForm = document.getElementById('video-form');
 
@@ -208,7 +213,11 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
 
     await renderMovies();
 
+    let downloadLink = '#';
 
+    const $downloadButton = document.getElementById('download-torrent');
+    
+    $downloadButton.addEventListener('click', hrefLink);
 
     const $refresh = document.getElementById('refresh');
     $refresh.addEventListener('click', async () => {

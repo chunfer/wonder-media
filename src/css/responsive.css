@@ -1,6 +1,6 @@
 @keyframes musicIn {
     0% {
-        transform: translateY(calc(180px - 100vh));
+        transform: translateY(calc(165px - 100vh));
     }
     100% {
         transform: translateY(0);
@@ -12,7 +12,7 @@
         transform: translateY(0);
     }
     100% {
-        transform: translateY(calc(180px - 100vh));
+        transform: translateY(calc(165px - 100vh));
     }
 }
 
@@ -38,7 +38,7 @@
         z-index: 2;
         padding: 0;
         top: 0;
-        transform: translateY(calc(180px - 100vh));
+        transform: translateY(calc(165px - 100vh));
         width: 100%;
         box-sizing: border-box;
         background: #171929;
@@ -46,14 +46,14 @@
 
     .menu-btn{
         display: initial;
-    }foo fighters
+    }
 
     .audio-search, .sidebarPlaylist{
         padding: 0 1em;
     }
 
     .audio-search{
-        padding-top: 160px;
+        padding-top: 147px;
     }
 
     .logo{
@@ -62,7 +62,7 @@
         left: 0;
         right: 0;
         z-index: 3;
-        padding: 15px 0;
+        padding: 10px 0;
         width: 100%;
         background: #171929;
     }
@@ -84,9 +84,10 @@
         height: unset;
         justify-content: center;
         width: 100%;
+        box-sizing: border-box;
     }
     .home-primary{
-        padding-top: 35px;
+        padding-top: 18px;
         grid-template-columns: 1fr 1fr;
     }
 
@@ -108,9 +109,32 @@
     .user span{
         display: none;
     }
+    .user img {
+        margin-right: 0;
+    }
+
+    #song-title{
+        font-size: 20px;
+    }
+
+    .myPlaylist{
+        margin: 9px 0;
+    }
+
+    .myPlaylist-item span, .playlistFriends-item {
+        margin-bottom: 5px;
+    }
+
+    .playlistFriends{
+        margin: 7px 0;
+    }
 
     .sidebar-content h2{
-        font-size: 20px;
+        font-size: 17px;
+    }
+
+    .modal{
+        padding: 1.4em;
     }
 
     .music-modal{
@@ -121,7 +145,15 @@
         padding: 0 2em;
         box-sizing: border-box;
     }
+
     .music-modal h4{
         padding-right: 1em;
     }
+
+    .primaryPlaylistItem img {
+        width: 138px;
+        height: 208px;
+        object-fit: cover;
+    }
+
 }

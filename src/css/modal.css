@@ -160,6 +160,7 @@
 }
 
 .close:active{
+  transform: scale(0.9);
   color: gray;
 }
 /*@keyframes animationIn {*/

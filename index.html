@@ -46,15 +46,8 @@
           </div>
           <div class="sidebarPlaylist">
             <h2 class="sidebarPlaylist-title">Canciones almacenadas</h2>
-            <ul class="playlistFriends">
-              <li class="playlistFriends-item">
-                <a href="#">
-                  <img src="src/images/one-more-time.jpg" alt="One more time" />
-                  <span>
-                    One More Time
-                  </span>
-                </a>
-              </li>
+            <ul class="playlistFriends" id="saved">
+
             </ul>
           </div>
           <div class="menu-btn" id="music-btn">
@@ -124,20 +117,22 @@
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione impedit maiores enim alias ex accusantium quasi cum autem, nam, voluptas tenetur laudantium quod! Odit voluptate illo, voluptas vel quia, quae.</p>
     </div>
     <div class="modal-buttons">
-      <button class="modal-btn primary">Descargar Torrent</button>
+      <button class="modal-btn primary" id="download-torrent">Descargar Torrent</button>
     </div>
   </div>
   <div class="modal artist-modal" id="artist-modal">
+    <span class="close" id="hide-artist-modal">&times;</span>
     <h1>Nombre de artista</h1>
     <div class="modal-content">
       <img src="" onerror="ImgError(this)" width="170" height="256">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione impedit maiores enim alias ex accusantium quasi cum autem, nam, voluptas tenetur laudantium quod! Odit voluptate illo, voluptas vel quia, quae.</p>
     </div>
-    <div class="modal-buttons">
+    <!-- <div class="modal-buttons">
       <button class="modal-btn primary" id="hide-artist-modal">Cerrar</button>
-    </div>
+    </div> -->
   </div>
   <div class="modal music-modal" id="music-modal">
+    <span class="close" id="hide-music-modal">&times;</span>
     <div class="music-modal-title">
       <img src="" onerror="ImgError(this)" id="artist-img"/>
       <h2 id="song-title">Título de canción</h2>
@@ -148,7 +143,7 @@
       </div>
       <h4>Haga click <a id="youtube-link" href="#" target="_blank">aquí</a> en caso de error</h4>
       <div class="modal-buttons">
-        <button class="modal-btn primary" id="hide-music-modal">Cerrar</button>
+        <button class="modal-btn primary" id="save-music">Guardar</button>
       </div>
     </div>
   </div>

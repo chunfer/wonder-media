@@ -33,15 +33,43 @@ const YOUTUBE_URL = 'https://www.youtube.com/';
         $artistModal.style.animation = 'modalIn .8s forwards';
     }
 
-    function showMusicModal($element){
-        const {vid, song} = $element.dataset;
-        const {strArtist, strArtistClearart} = artist;
-        $youtubeLink.setAttribute('href', `${YOUTUBE_URL}watch?v=${vid}`)
-        $youtubeVideo.setAttribute('src', `${YOUTUBE_URL}embed/${vid}`)
-        $musicModalImage.setAttribute('src', strArtistClearart)
-        $musicModalTitle.textContent = `${strArtist} - ${song}`;
+    function showMusicModal($element, saved = false){
+        vid = $element.dataset.vid;
+
+        if (saved){
+            song = $element.dataset.song;
+            image = $element.dataset.image;
+        }else{
+            
+            song = artist.strArtist + ' - ' + $element.dataset.song;
+            image = artist.strArtistClearart;
+        }
+
+        $youtubeLink.setAttribute('href', `${YOUTUBE_URL}watch?v=${vid}`);
+        $youtubeVideo.setAttribute('src', `${YOUTUBE_URL}embed/${vid}`);
+        $musicModalImage.setAttribute('src', image);
+        $musicModalTitle.textContent = song;
         $overlay.classList.add('active');
         $musicModal.style.animation = 'modalIn .8s forwards';
+    }
+
+    function saveItem(){
+        const $element = {vid: vid, song: song, image: image};
+        const item = savedList.find(element => element.vid === vid)
+        if(item){
+            alert('El elemento seleccionado ya está almacenado')
+        }else{
+            savedList.push($element);
+            addToContainer($element, $savedContainer, savedItemTemplate, true);
+            window.localStorage.setItem('savedList', JSON.stringify(savedList))
+        }
+    }
+
+    function addToContainer($element, $container, template, saved = false){
+        const HTMLString = template($element);
+        const HTMLToElement = createTemplate(HTMLString);
+        addEventClick(HTMLToElement, saved);
+        $container.append(HTMLToElement);
     }
 
     function hideArtistModal(){
@@ -54,9 +82,9 @@ const YOUTUBE_URL = 'https://www.youtube.com/';
         $musicModal.style.animation = 'modalOut .8s forwards';
     }
 
-    function addEventClick($element){
+    function addEventClick($element, saved = false){
         $element.addEventListener('click', () => {
-          showMusicModal($element);
+          showMusicModal($element, saved);
         });
         // JQUERY
         // $('.div').on('click', () => {alert('click')})
@@ -68,6 +96,13 @@ const YOUTUBE_URL = 'https://www.youtube.com/';
         <span>
             ${strTrack}
         </span>
+      </li>`
+    }
+
+    function savedItemTemplate({vid, song, image}){
+        return `<li class="playlistFriends-item" data-vid="${vid}" data-song="${song}" data-image="${image}">
+        <img src="${image}" onError="ImgError(this)" />
+        <span>${song}</span>
       </li>`
     }
 
@@ -87,6 +122,27 @@ const YOUTUBE_URL = 'https://www.youtube.com/';
         }
         musicFlag = !musicFlag;
     }
+
+    function checkStorage(){
+        const data = window.localStorage.getItem('savedList');
+        if(data){
+            return JSON.parse(data);
+        }
+        return [];
+    }
+
+    let vid, song, image;
+
+    const savedList = checkStorage();
+    const $savedContainer = document.getElementById('saved');
+
+    savedList.forEach(element => {
+        addToContainer(element, $savedContainer, savedItemTemplate, true)
+    })
+   
+    const $saveButton = document.getElementById('save-music');
+    $saveButton.addEventListener('click', saveItem);
+
     let musicFlag = false;
     const $sidebarContent = document.getElementById('sidebar-content');
     const $musicBtn = document.getElementById('music-btn');
@@ -96,7 +152,8 @@ const YOUTUBE_URL = 'https://www.youtube.com/';
     const $musicForm = document.getElementById('music-form');
     const $playlistTitle = document.getElementById('myPlaylist-title');
     const $myPlaylistContainer = document.getElementById('myPlaylist');
-    let artist, videos;
+
+    let artist, videoList;
     const $overlay = document.getElementById('overlay');
 
     const $artistModal = document.getElementById('artist-modal');
@@ -132,16 +189,12 @@ const YOUTUBE_URL = 'https://www.youtube.com/';
   
         try {
             artist = await getArtist(data.get('artist'));
-            videos = await getMusicVideos(artist);
+            videoList = await getMusicVideos(artist);
             $playlistTitle.textContent = artist.strArtist;
             $playlistTitle.addEventListener('click', () =>{showArtistModal(artist)})
             
-            videos.forEach(video => {
-                HTMLString = myPlayListItemTemplate(video);
-                $songElement = createTemplate(HTMLString);
-                addEventClick($songElement);
-
-                $myPlaylistContainer.append($songElement);
+            videoList.forEach(video => {
+                addToContainer(video, $myPlaylistContainer, myPlayListItemTemplate)
             });
             $myPlaylistContainer.children[0].remove()
   
