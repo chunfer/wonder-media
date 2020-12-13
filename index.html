@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0;">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="shortcut icon" href="src/images/wonder-media-icon.png" type="image/png">
   <link rel="stylesheet" href="src/css/fonts.css">
@@ -15,6 +15,12 @@
         source.src = "src/images/notfound.png";
         source.onerror = "";
         return true;
+    }
+    function closeFeaturing(){
+      const $home = document.getElementById('home');
+      const $featuringContainer = document.getElementById('featuring');
+      $home.classList.remove('search-active');
+      $featuringContainer.innerHTML = '';
     }
 </script>
 </head>
@@ -34,7 +40,7 @@
             </form>
           </div>
           <div class="sidebarPlaylist">
-            <h2 class="sidebarPlaylist-title" id="myPlaylist-title"></h2>
+            <h2 class="sidebarPlaylist-title" id="myPlaylist-title">Lista de canciones</h2>
             <ol class="myPlaylist" id="myPlaylist">
             </ol>
           </div>
@@ -60,9 +66,16 @@
     <div class="home-primary">
       <!-- <section class="primary"> -->
         <div class="primary-search">
-          <form action="" class="search" id="video-form">
-            <input type="text" name="name" placeholder="Buscar un artista o tema favorito"/>
-          </form>
+          <div class="form">
+            <div class="form-input">
+              <form action="" class="search" id="video-form">
+                <input type="text" name="name" placeholder="Buscar un artista o tema favorito"/>
+              </form>
+            </div>
+            <div class="refresh" id="refresh">
+              <img src="src/images/sync.webp" alt="R">
+            </div>
+          </div>
         </div>
         <div class="primary-user">
           <div class="user">
@@ -104,13 +117,14 @@
   <div class="overlay" id="overlay">
   </div>
   <div class="modal video-modal" id="video-modal">
+    <span class="close" id="hide-video-modal">&times;</span>
     <h1>Título de pelicula</h1>
     <div class="modal-content">
       <img src="" onerror="ImgError(this)" width="170" height="256">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ratione impedit maiores enim alias ex accusantium quasi cum autem, nam, voluptas tenetur laudantium quod! Odit voluptate illo, voluptas vel quia, quae.</p>
     </div>
     <div class="modal-buttons">
-      <button class="modal-btn primary" id="hide-video-modal">Cerrar</button>
+      <button class="modal-btn primary">Descargar Torrent</button>
     </div>
   </div>
   <div class="modal artist-modal" id="artist-modal">
@@ -125,17 +139,17 @@
   </div>
   <div class="modal music-modal" id="music-modal">
     <div class="music-modal-title">
-      <img src="src/images/gorillaz.jpg" alt="Juan" id="artist-img"/>
+      <img src="" onerror="ImgError(this)" id="artist-img"/>
       <h2 id="song-title">Título de canción</h2>
     </div>
     <div class="modal-content">
       <div class="music-video">
-        <iframe class="youtube-video" id="youtube-video" src="https://www.youtube.com/embed/fHI8X4OXluQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe class="youtube-video" id="youtube-video" src="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
       <h4>Haga click <a id="youtube-link" href="#" target="_blank">aquí</a> en caso de error</h4>
-    <div class="modal-buttons">
-      <button class="modal-btn primary" id="hide-music-modal">Cerrar</button>
-    </div>
+      <div class="modal-buttons">
+        <button class="modal-btn primary" id="hide-music-modal">Cerrar</button>
+      </div>
     </div>
   </div>
 

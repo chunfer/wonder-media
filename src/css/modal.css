@@ -43,6 +43,10 @@
   /*visibility: visible;*/
   display: flex;
 }
+.modals-active{
+  transform: translateY(0px);
+}
+
 .modal{
   background: white;
   padding: 2em;
@@ -147,6 +151,17 @@
   color: #ff458b;
 }
 
+.close{    
+  font-size: 40px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  right: 13px;
+}
+
+.close:active{
+  color: gray;
+}
 /*@keyframes animationIn {*/
 @keyframes modalIn {
   0% {

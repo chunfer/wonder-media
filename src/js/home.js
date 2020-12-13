@@ -67,7 +67,6 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
       $modal.style.animation = 'modalOut .8s forwards';
     }
 
-
     function renderMovieList(list, $container, category){
       $container.children[0].remove();
       list.forEach(async movie => {
@@ -98,7 +97,54 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
         <p class="featuring-title">${found}</p>
         <p class="featuring-album">${title}</p>
       </div>
+      <span class="close-featuring" onclick="closeFeaturing()">&times;<span>
     </div>`
+    }
+
+    async function cacheExist(category){
+      const listName = `${category}List`;
+      const cacheList = window.localStorage.getItem(listName);
+    
+      if (cacheList){
+        const list = JSON.parse(cacheList);
+        return list;
+      }
+      
+      const {data: {movies: list}} = await getData(`${MOVIE_URL}genre=${category}`);
+      window.localStorage.setItem(listName, JSON.stringify(list));
+      return list;
+    }
+
+    function clearListsInStorage(){
+      window.localStorage.removeItem('actionList');
+      window.localStorage.removeItem('dramaList');
+      window.localStorage.removeItem('animationList');
+    }
+
+    function clearContainers(){
+      $actionContainer.innerHTML = `<img src="src/images/loader.gif" width="50" height="50" alt="">`;
+      $dramaContainer.innerHTML = `<img src="src/images/loader.gif" width="50" height="50" alt="">`;
+      $animationContainer.innerHTML = `<img src="src/images/loader.gif" width="50" height="50" alt="">`;
+    }
+
+    async function refreshMovies(){
+      clearContainers();
+      clearListsInStorage();
+      await renderMovies();
+    }
+
+    async function renderMovies(){
+      actionList = await cacheExist('action');
+      $actionContainer = document.querySelector('#action');
+      renderMovieList(actionList, $actionContainer, 'action');
+  
+      dramaList = await cacheExist('drama');
+      $dramaContainer = document.getElementById('drama');
+      renderMovieList(dramaList, $dramaContainer, 'drama');
+  
+      animationList = await cacheExist('animation');
+      $animationContainer = document.getElementById('animation');
+      renderMovieList(animationList, $animationContainer, 'animation');
     }
 
     const $home = document.getElementById('home');
@@ -134,17 +180,19 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
       $featuringContainer.innerHTML = HTMLString;
     });
 
-    const {data: {movies: actionList}}  = await getData(`${MOVIE_URL}genre=action`);
-    const $actionContainer = document.querySelector('#action');
-    renderMovieList(actionList, $actionContainer, 'action');
+    const today = new Date().getDay();
+    const dayInStorage = Number(window.localStorage.getItem('day'));
 
-    const {data: {movies: dramaList}} = await getData(`${MOVIE_URL}genre=drama`);
-    const $dramaContainer = document.getElementById('drama');
-    renderMovieList(dramaList, $dramaContainer, 'drama');
+    if(dayInStorage){
+      if(today !== dayInStorage){
+        clearListsInStorage();
+      }
+    }
+    window.localStorage.setItem('day', today);
 
-    const {data: {movies: animationList}} = await getData(`${MOVIE_URL}genre=animation`);   
-    const $animationContainer = document.getElementById('animation');
-    renderMovieList(animationList, $animationContainer, 'animation')
+    let actionList, $actionContainer;
+    let dramaList, $dramaContainer;
+    let animationList, $animationContainer; 
 
     const $modal = document.getElementById('video-modal');
     const $overlay = document.getElementById('overlay');
@@ -157,4 +205,14 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
     const modalTitle = $modal.querySelector('h1');
     const modalImage = $modal.querySelector('img');
     const modalDescription = $modal.querySelector('p');
+
+    await renderMovies();
+
+
+
+    const $refresh = document.getElementById('refresh');
+    $refresh.addEventListener('click', async () => {
+      await refreshMovies();
+    });
+
 })()

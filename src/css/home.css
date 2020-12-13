@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  position: relative;
   font-family: 'Lato', sans-serif;
 }
 
@@ -8,7 +9,7 @@ body {
 .home {
   display: grid;
   height: 100vh;
-  grid-template-columns: 350px 1fr;
+  grid-template-columns: 370px 1fr;
   grid-template-rows: 1fr 0;
   grid-template-areas: "sidebar primary"
                        "sidebar featuring";
@@ -63,12 +64,17 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
   overflow: auto;
 }
 
+.sidebar-content h2{
+  margin: 0;
+}
+
 /*Logo*/
 
 .logo-image {
   margin: 0;
   padding-bottom: 20px;
 }
+
 .logo-image img {
   max-width: 100%;
 }
@@ -166,9 +172,19 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
   overflow: auto;
 }
 
+.form{
+  display: grid;
+  grid-template-columns: 1fr 0;
+  align-items: center;
+}
+
+.form-input{
+  padding-right: 20px;
+}
 
 .search {
   grid-area: search;
+  display: inline;
 }
 
 .search input {
@@ -181,6 +197,23 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
   border: none;
   box-shadow: 0 0 10px #f0f0f0;
   box-sizing: border-box;;
+}
+
+.refresh{
+  width: 24px;
+  height: 24px;
+  margin:-12px;
+  cursor: pointer;
+}
+
+.refresh:active{
+  animation:spin 500ms linear infinite;
+}
+
+.refresh img{
+  height: 100%;
+  width: 100%;
+  
 }
 
 .primary-search {
@@ -215,7 +248,7 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
   object-fit: cover;
   border-radius: 50%;
   margin-right: 10px;
-  margin-left: 10px;
+  margin-left: 15px;
 }
 
 .primary-list {
@@ -261,6 +294,11 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
   height: 256px;
   object-fit: cover;
 }
+
+.primaryPlaylistItem:hover {
+  transform: scale(0.95);
+}
+
 .primaryPlaylistItem-title {
   margin: 5px 0;
   color: #44546B;
@@ -271,6 +309,8 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
 
 .featuring {
   background: linear-gradient(to right, #3800ff, #ff458b);
+  position: relative;
+  bottom: 0;
   display: flex;
   height: 100%;
   align-items: center;
@@ -291,9 +331,22 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
   margin: 10px;
 }
 
+.close-featuring{
+  font-size: 32px;
+  position: absolute;
+  top: -2px;
+  right: 6px;
+  cursor: pointer;
+}
+
+.close-featuring:active{
+  color: #888B8E;
+}
+
+
 
 .fadeIn {
-  animation: 5000ms fadeIn;
+  /* animation: 3000ms fadeIn; */
 }
 
 @keyframes fadeIn {
@@ -304,4 +357,11 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
   100% {
     opacity: 1;
   }
+}
+
+@keyframes spin { 
+  100% { 
+    -webkit-transform: rotate(360deg); 
+    transform:rotate(360deg);
+  } 
 }
