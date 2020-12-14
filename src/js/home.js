@@ -159,7 +159,7 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
       location.href = downloadLink;
     }
 
-    const today = new Date(2020,11,4).getDay();
+    const today = new Date().getDay();
     const dayInStorage = Number(window.localStorage.getItem('day'));
 
     if(dayInStorage){
