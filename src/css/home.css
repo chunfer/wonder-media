@@ -130,6 +130,7 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
   align-items: center;
   color: white;
   text-decoration: none;
+  animation: moveUp 1s;
 }
 
 
@@ -391,4 +392,19 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
     -webkit-transform: rotate(360deg); 
     transform:rotate(360deg);
   } 
+}
+
+@keyframes moveUp{
+  0%{
+    -webkit-transform: translateY(1000px); 
+    transform:translateY(1000px);
+  }
+  50%{
+    -webkit-transform: translateY(10px); 
+    transform:translateY(10px);
+  }
+  100%{
+    -webkit-transform: translateY(0px); 
+    transform:translateY(0px);
+  }
 }

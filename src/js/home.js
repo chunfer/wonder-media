@@ -159,6 +159,19 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
       location.href = downloadLink;
     }
 
+    const today = new Date(2020,11,4).getDay();
+    const dayInStorage = Number(window.localStorage.getItem('day'));
+
+    if(dayInStorage){
+      console.log('Hey');
+      if(today !== dayInStorage){
+        console.log('Jude');
+        clearListsInStorage();
+      }
+    }
+
+    window.localStorage.setItem('day', today);
+
     const $home = document.getElementById('home');
     const $videoForm = document.getElementById('video-form');
 
@@ -186,15 +199,7 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
       }
     });
 
-    const today = new Date().getDay();
-    const dayInStorage = Number(window.localStorage.getItem('day'));
 
-    if(dayInStorage){
-      if(today !== dayInStorage){
-        clearListsInStorage();
-      }
-    }
-    window.localStorage.setItem('day', today);
 
     let actionList, $actionContainer;
     let dramaList, $dramaContainer;
