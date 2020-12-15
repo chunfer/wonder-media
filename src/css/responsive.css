@@ -1,13 +1,15 @@
 :root{
-    --header-height: 217px;
+    --header-height: 165px;
 }
 
 @keyframes musicIn {
     0% {
+        height: 100vh;
         bottom: unset;
         transform: translateY(calc(var(--header-height) - 100vh));
     }
     100% {
+        height: unset;
         bottom: 0;
         transform: translateY(0);
     }
@@ -15,10 +17,12 @@
 
 @keyframes musicOut {
     0% {
+        height: unset;
         bottom: 0;
         transform: translateY(0);
     }
     100% {
+        height: 100vh;
         bottom: unset;
         transform: translateY(calc(var(--header-height) - 100vh));
     }
@@ -50,6 +54,7 @@
         text-align: left;
         z-index: 2;
         padding: 0;
+        height: 100vh;
         top: 0;
         transform: translateY(calc(var(--header-height) - 100vh));
         width: 100%;
