@@ -57,6 +57,10 @@
         background: #171929;
     }
 
+    .sidebar-content h2{
+        font-size: 17px;
+    }
+
     .menu-btn{
         display: initial;
     }
@@ -110,10 +114,22 @@
         margin: 0 -10px 0;
         grid-template-columns: 1fr 1fr;
     }
+    .myPlaylist{
+        margin: 9px 0;
+    }
+
+    .myPlaylist-item span, .playlistFriends-item {
+        margin-bottom: 3px;
+    }
+
+    .playlistFriends{
+        margin: 7px 0 0;
+    }
 
     .primary-list {
         padding-top: 46px;
     }
+
 
 }
 @media screen and (max-width: 658px){
@@ -143,21 +159,12 @@
         font-size: 20px;
     }
 
-    .myPlaylist{
-        margin: 9px 0;
+    .primaryPlaylistItem img {
+        width: 138px;
+        height: 208px;
+        object-fit: cover;
     }
 
-    .myPlaylist-item span, .playlistFriends-item {
-        margin-bottom: 3px;
-    }
-
-    .playlistFriends{
-        margin: 7px 0 0;
-    }
-
-    .sidebar-content h2{
-        font-size: 17px;
-    }
 
     .modal{
         padding: 1.4em;
