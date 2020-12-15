@@ -8,9 +8,11 @@
         bottom: unset;
         transform: translateY(calc(var(--header-height) - 100vh));
     }
-    100% {
+    99% {
         height: unset;
         bottom: 0;
+    }
+    100% {
         transform: translateY(0);
     }
 }
@@ -21,9 +23,11 @@
         bottom: 0;
         transform: translateY(0);
     }
-    100% {
+    1% {
         height: 100vh;
         bottom: unset;
+    }
+    100% {
         transform: translateY(calc(var(--header-height) - 100vh));
     }
 }
