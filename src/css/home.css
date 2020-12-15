@@ -163,12 +163,17 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
 
 .home-primary {
   display: grid;
-  grid-template-areas: "search user"
-                       "list list";
   grid-template-rows: auto 1fr;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 1fr;
   padding: 10px;
   overflow: auto;
+}
+
+.searchbox{
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  background: white;
+  position: relative;
 }
 
 .form{
@@ -182,7 +187,6 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
 }
 
 .search {
-  grid-area: search;
   display: inline;
 }
 
@@ -251,7 +255,6 @@ Las funciones son piezas de código que puedes reutilizar y se declaran con la p
 }
 
 .primary-list {
-  grid-area: list;
   overflow: auto;
 }
 

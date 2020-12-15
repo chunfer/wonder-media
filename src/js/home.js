@@ -1,5 +1,5 @@
 const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
-
+const REFRESH_RATE = 12*3600*1000;
 
 (async function load(){
 
@@ -159,18 +159,18 @@ const MOVIE_URL = 'https://yts.mx/api/v2/list_movies.json?';
       location.href = downloadLink;
     }
 
-    const today = new Date().getDay();
-    const dayInStorage = Number(window.localStorage.getItem('day'));
+    const time = new Date().getTime();
+    const timeInStorage = Number(window.localStorage.getItem('day'));
 
-    if(dayInStorage){
+    if(timeInStorage){
       console.log('Hey');
-      if(today !== dayInStorage){
+      if((time - timeInStorage) >= REFRESH_RATE){
         console.log('Jude');
         clearListsInStorage();
       }
     }
 
-    window.localStorage.setItem('day', today);
+    window.localStorage.setItem('day', time);
 
     const $home = document.getElementById('home');
     const $videoForm = document.getElementById('video-form');
