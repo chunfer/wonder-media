@@ -118,7 +118,7 @@ const YOUTUBE_URL = 'https://www.youtube.com/';
             $sidebarContent.style.animation = 'musicOut .8s forwards';
         }else{
             $musicBtn.innerHTML = '<i class="fa fa-angle-up"></i>';
-            $sidebarContent.style.animation = 'musicIn .8s forwards 30ms';
+            $sidebarContent.style.animation = 'musicIn .8s forwards .2s';
         }
         musicFlag = !musicFlag;
     }
