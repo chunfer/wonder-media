@@ -4,13 +4,9 @@
 
 @keyframes musicIn {
     0% {
-        height: 100vh;
-        bottom: unset;
-        transform: translateY(calc(var(--header-height) - 100vh));
-    }
-    99% {
         height: unset;
         bottom: 0;
+        transform: translateY(calc(var(--header-height) - 100vh));
     }
     100% {
         transform: translateY(0);
@@ -19,13 +15,9 @@
 
 @keyframes musicOut {
     0% {
-        height: unset;
-        bottom: 0;
-        transform: translateY(0);
-    }
-    1% {
         height: 100vh;
         bottom: unset;
+        transform: translateY(0);
     }
     100% {
         transform: translateY(calc(var(--header-height) - 100vh));
