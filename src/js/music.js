@@ -115,10 +115,10 @@ const YOUTUBE_URL = 'https://www.youtube.com/';
     function toggleMusicContent(){
         if(musicFlag){
             $musicBtn.innerHTML = '<i class="fa fa-angle-down"></i>';
-            $sidebarContent.style.animation = 'musicOut .8s forwards 30ms';
+            $sidebarContent.style.animation = 'musicOut .8s forwards';
         }else{
             $musicBtn.innerHTML = '<i class="fa fa-angle-up"></i>';
-            $sidebarContent.style.animation = 'musicIn .8s forwards';
+            $sidebarContent.style.animation = 'musicIn .8s forwards 30ms';
         }
         musicFlag = !musicFlag;
     }
