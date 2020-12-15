@@ -7,12 +7,14 @@
         transform: translateY(calc(var(--header-height) - 100vh));
     }
     100% {
+        bottom: 0;
         transform: translateY(0);
     }
 }
 
 @keyframes musicOut {
     0% {
+        bottom: 0;
         transform: translateY(0);
     }
     100% {
@@ -47,7 +49,6 @@
         z-index: 2;
         padding: 0;
         top: 0;
-        bottom: 0;
         transform: translateY(calc(var(--header-height) - 100vh));
         width: 100%;
         box-sizing: border-box;
