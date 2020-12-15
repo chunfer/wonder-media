@@ -108,6 +108,10 @@
         grid-template-columns: 1fr 1fr;
     }
 
+    .primary-list {
+        padding-top: 46px;
+    }
+
 }
 @media screen and (max-width: 658px){
     .artist-modal, .video-modal{
